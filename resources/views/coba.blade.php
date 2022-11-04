@@ -4,4 +4,6 @@ Halo
 <?php echo $nama ?>
 <br>
 
-Dengan Blade {{ $nama }}
+Dengan Blade Hallo{{ $nama }}
+
+tes
