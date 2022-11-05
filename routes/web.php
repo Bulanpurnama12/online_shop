@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function (){
+    return view('home');
+});
 
-Route::get('/', [FrontEndController::class, 'index']);
+
+
 Route::get('/coba_controller',[App\Http\Controllers\CobaController::class,'index']);
 
 Route::get('/admin/products',[App\Http\Controllers\ProductController::class,'index'])->name('products.index');
@@ -43,3 +49,14 @@ Route::delete('/admin/category/{id}', [CategoryController::class, 'delete'])->na
 Route::get('/admin/category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
 
 Route::put('/admin/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+
+Route::get('/', [FrontEndController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+Route::post('/login', [LoginController::class, 'autenticate'])->name('login.post');
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
